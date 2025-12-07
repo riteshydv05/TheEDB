@@ -5,4 +5,5 @@ export { default as Publications } from './Publications';
 export { default as Contact } from './Contact';
 export { default as Gallery } from './Gallery';
 export { default as Alumni } from './Alumni';
+export { default as HeroAlumni } from './HeroAlumni';
 export { default as Canvas } from './Canvas';
