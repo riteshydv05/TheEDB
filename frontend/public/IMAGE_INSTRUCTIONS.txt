@@ -1,0 +1,12 @@
+Please save these images to the public folder:
+
+1. University Building (from chat):
+   Save as: /Users/apple/Desktop/The EDB/frontend/public/university-building.jpg
+
+2. "The Editorial Board" text logo (black rounded font from chat):
+   Save as: /Users/apple/Desktop/The EDB/frontend/public/editorial-board-text.png
+
+3. Main circular logo (if not already saved):
+   Save as: /Users/apple/Desktop/The EDB/frontend/public/logo.png
+
+These images are referenced in the website and need to be saved to display properly.

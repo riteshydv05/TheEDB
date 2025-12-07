@@ -1,0 +1,4 @@
+Please save the Editorial Board logo image as:
+/Users/apple/Desktop/The EDB/frontend/public/logo.png
+
+The logo has been provided in the chat. Please download it and save it to this location.
