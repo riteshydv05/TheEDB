@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../components/Common/Card';
+import HeroAlumni from './HeroAlumni';
 
 const Alumni: React.FC = () => {
   const batchData = [
@@ -73,15 +74,10 @@ const Alumni: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <section className="bg-gradient-to-r from-primary-dark to-primary-light text-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Alumni & Archive</h1>
-          <p className="text-lg text-gray-200 max-w-2xl">
-            Celebrating the achievements and contributions of our alumni across the years.
-          </p>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <div className="h-[100vh] overflow-hidden">
+        <HeroAlumni />
+      </div>
 
       {/* Archive Section */}
       <section className="py-16 md:py-24">
