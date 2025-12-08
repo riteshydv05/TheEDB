@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import CardSwap, { Card } from '../components/Common/CardSwap';
-import RotatingText, { RotatingTextRef } from '../components/Common/RotatingText';
+import RotatingText, { type RotatingTextRef } from '../components/Common/RotatingText';
 
 
 function HeroAlumni() {

@@ -23,7 +23,7 @@ const Header: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
+    <header className="bg-white font-semibold shadow-md sticky top-0 z-50 border-b border-gray-200">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
                       ? 'bg-accent-orange text-white'
                       : 'text-primary-dark hover:bg-gray-100'
                   }`}
-                  style={{ fontFamily: "'Palatino Linotype', 'Book Antiqua', Palatino, serif" }}
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
                   <IconComponent className={`text-base transition-transform duration-300 ${
                     isActive(link.path) ? 'animate-pulse' : 'group-hover:scale-110 group-hover:rotate-12'
@@ -96,7 +96,7 @@ const Header: React.FC = () => {
                       ? 'bg-accent-orange text-white'
                       : 'text-primary-dark hover:bg-gray-100'
                   }`}
-                  style={{ fontFamily: "'Palatino Linotype', 'Book Antiqua', Palatino, serif" }}
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
                   <IconComponent className={`text-lg ${
                     isActive(link.path) ? 'animate-pulse' : ''
