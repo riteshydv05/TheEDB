@@ -7,7 +7,7 @@ interface AlumniRotatingBannerProps {
 }
 
 function AlumniRotatingBanner({ syncInterval, onIndexChange }: AlumniRotatingBannerProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [, setCurrentIndex] = useState(0);
 
   const batchTexts = ["2024", "2023", "2022", "2021", "2020", "2019", "2018"];
 

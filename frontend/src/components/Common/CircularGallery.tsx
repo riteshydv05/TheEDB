@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import './CircularGallery.css';
 
 function debounce(func: Function, wait: number) {
-  let timeout: NodeJS.Timeout;
+  let timeout: ReturnType<typeof setTimeout>;
   return function (this: any, ...args: any[]) {
     clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(this, args), wait);
@@ -442,7 +442,7 @@ class App {
     this.scroll.position = this.scroll.current;
     this.start = e.touches ? e.touches[0].clientX : e.clientX;
   }
-  onTouchMove(e: any) {
+  onTouchMove(_e: any) {
     // Disable drag motion to prevent auto scrolling
     return;
   }
@@ -450,7 +450,7 @@ class App {
     this.isDown = false;
     this.onCheck();
   }
-  onWheel(e: any) {
+  onWheel(_e: any) {
     // Disable wheel scrolling to prevent auto motion
     return;
   }

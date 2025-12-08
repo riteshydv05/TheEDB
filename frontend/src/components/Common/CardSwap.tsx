@@ -3,12 +3,12 @@ import React, {
   cloneElement,
   forwardRef,
   isValidElement,
-  ReactElement,
-  ReactNode,
-  RefObject,
   useEffect,
   useMemo,
-  useRef
+  useRef,
+  type ReactElement,
+  type ReactNode,
+  type RefObject
 } from 'react';
 import gsap from 'gsap';
 
