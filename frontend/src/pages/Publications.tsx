@@ -14,6 +14,8 @@ const Publications: React.FC = () => {
       image: '/image.png',
       description: 'The May Issue of TIRESIA brings you a collection of thought-provoking articles, creative pieces, and insights from our university community. Featuring interviews, campus buzz, tech insights, and much more.',
       isFeatured: true,
+      // Add your Cloudinary PDF URL here after uploading
+      pdfUrl: 'https://res.cloudinary.com/dwdx4kjgx/raw/upload/v1765314794/vol_16_issue_2_xocsqk.pdf',
     },
     {
       id: 2,
@@ -22,6 +24,7 @@ const Publications: React.FC = () => {
       date: 'November 2024',
       category: 'Computer Science',
       image: '📄',
+      // pdfUrl: 'https://res.cloudinary.com/YOUR_CLOUD_NAME/raw/upload/...',
     },
     {
       id: 3,

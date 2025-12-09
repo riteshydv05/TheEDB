@@ -7,3 +7,4 @@ export { default as Gallery } from './Gallery';
 export { default as Alumni } from './Alumni';
 export { default as HeroAlumni } from './HeroAlumni';
 export { default as Canvas } from './Canvas';
+export { default as AdminUpload } from './AdminUpload';

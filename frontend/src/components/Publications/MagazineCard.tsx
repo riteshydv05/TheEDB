@@ -1,6 +1,7 @@
 import React, { useState, memo } from 'react';
 import { Card } from '../UI';
-import { FaDownload, FaUser, FaCalendar, FaTag, FaEye } from 'react-icons/fa';
+import { FaDownload, FaUser, FaCalendar, FaTag, FaEye, FaFilePdf } from 'react-icons/fa';
+import PDFViewer from './PDFViewer';
 
 export interface Publication {
   id: number;
@@ -12,6 +13,7 @@ export interface Publication {
   image: string;
   description?: string;
   isFeatured?: boolean;
+  pdfUrl?: string; // Add PDF URL field
 }
 
 interface MagazineCardProps {
@@ -20,10 +22,22 @@ interface MagazineCardProps {
 
 const MagazineCard: React.FC<MagazineCardProps> = memo(({ publications }) => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [viewingPDF, setViewingPDF] = useState<{ url: string; title: string } | null>(null);
 
   // Separate featured publication from others
   const featuredPub = publications.find(pub => pub.isFeatured);
   const otherPubs = publications.filter(pub => !pub.isFeatured);
+
+  const handleViewPDF = (pdfUrl: string, title: string) => {
+    setViewingPDF({ url: pdfUrl, title });
+  };
+
+  const handleDownload = (pdfUrl: string, fileName: string) => {
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = fileName;
+    link.click();
+  };
 
   return (
     <section className="py-16 md:py-20">
@@ -57,16 +71,26 @@ const MagazineCard: React.FC<MagazineCardProps> = memo(({ publications }) => {
                   />
                   
                   {/* Hover Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent rounded-lg flex items-end justify-center pb-8 transition-all duration-300 ${
+                  <div className={`absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent rounded-lg flex items-end justify-center pb-8 transition-all duration-300 ${
                     hoveredId === featuredPub.id ? 'opacity-100' : 'opacity-0'
                   }`}>
                     <div className="flex gap-3">
-                      <button className="px-5 py-2.5 bg-accent-orange hover:bg-orange-600 text-white rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 text-sm">
-                        <FaDownload /> Download
-                      </button>
-                      <button className="px-5 py-2.5 bg-white/90 hover:bg-white text-primary-dark rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 text-sm">
-                        <FaEye /> Preview
-                      </button>
+                      {featuredPub.pdfUrl && (
+                        <button 
+                          onClick={() => handleViewPDF(featuredPub.pdfUrl!, featuredPub.title)}
+                          className="px-5 py-2.5 bg-white/90 hover:bg-white text-primary-dark rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 text-sm"
+                        >
+                          <FaEye /> Preview
+                        </button>
+                      )}
+                      {featuredPub.pdfUrl && (
+                        <button 
+                          onClick={() => handleDownload(featuredPub.pdfUrl!, `${featuredPub.title}.pdf`)}
+                          className="px-5 py-2.5 bg-accent-orange hover:bg-orange-600 text-white rounded-lg font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105 text-sm"
+                        >
+                          <FaDownload /> Download
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -124,7 +148,11 @@ const MagazineCard: React.FC<MagazineCardProps> = memo(({ publications }) => {
                   </div>
                 </div>
 
-                <button className="w-full md:w-auto px-8 py-3.5 bg-accent-orange hover:bg-orange-600 text-white rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] text-base">
+                <button 
+                  onClick={() => featuredPub.pdfUrl ? handleDownload(featuredPub.pdfUrl, `${featuredPub.title}.pdf`) : undefined}
+                  disabled={!featuredPub.pdfUrl}
+                  className="w-full md:w-auto px-8 py-3.5 bg-accent-orange hover:bg-orange-600 text-white rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                >
                   <FaDownload /> Download Full Issue
                 </button>
               </div>
@@ -146,7 +174,7 @@ const MagazineCard: React.FC<MagazineCardProps> = memo(({ publications }) => {
               {otherPubs.map((pub) => (
                 <Card key={pub.id} className="flex flex-col group overflow-hidden" hoverable>
                   {/* Publication Image/Icon */}
-                  <div className="relative overflow-hidden rounded-xl mb-5 h-52 bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
+                  <div className="relative overflow-hidden rounded-xl mb-5 h-52 bg-linear-to-br from-gray-100 to-gray-50 flex items-center justify-center">
                     {pub.image.startsWith('http') || pub.image.startsWith('/') ? (
                       <img
                         src={pub.image}
@@ -166,30 +194,59 @@ const MagazineCard: React.FC<MagazineCardProps> = memo(({ publications }) => {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-primary-dark mb-3 flex-grow leading-snug tracking-tight group-hover:text-accent-orange transition-colors">
+                  <h3 className="text-lg font-bold text-primary-dark mb-3 grow leading-snug tracking-tight group-hover:text-accent-orange transition-colors">
                     {pub.title}
                   </h3>
 
                   <div className="space-y-2.5 border-t border-gray-100 pt-4 mb-4">
                     <div className="flex items-center gap-2 text-gray-600">
-                      <FaUser className="text-accent-orange flex-shrink-0" size={12} />
+                      <FaUser className="text-accent-orange shrink-0" size={12} />
                       <span className="text-sm truncate">{pub.authors}</span>
                     </div>
                     <div className="flex items-center gap-2 text-gray-600">
-                      <FaCalendar className="text-accent-orange flex-shrink-0" size={12} />
+                      <FaCalendar className="text-accent-orange shrink-0" size={12} />
                       <span className="text-sm">{pub.date}</span>
                     </div>
                   </div>
 
-                  <button className="w-full bg-primary-dark text-white py-2.5 rounded-lg hover:bg-accent-orange transition-all duration-300 flex items-center justify-center gap-2 font-semibold text-sm">
-                    <FaDownload /> Download
-                  </button>
+                  <div className="flex gap-2">
+                    {pub.pdfUrl && (
+                      <button 
+                        onClick={() => handleViewPDF(pub.pdfUrl!, pub.title)}
+                        className="flex-1 bg-primary-dark text-white py-2.5 rounded-lg hover:bg-accent-orange transition-all duration-300 flex items-center justify-center gap-2 font-semibold text-sm"
+                      >
+                        <FaEye /> View
+                      </button>
+                    )}
+                    {pub.pdfUrl && (
+                      <button 
+                        onClick={() => handleDownload(pub.pdfUrl!, `${pub.title}.pdf`)}
+                        className="flex-1 bg-accent-orange text-white py-2.5 rounded-lg hover:bg-orange-600 transition-all duration-300 flex items-center justify-center gap-2 font-semibold text-sm"
+                      >
+                        <FaDownload />
+                      </button>
+                    )}
+                    {!pub.pdfUrl && (
+                      <button className="w-full bg-gray-300 text-gray-500 py-2.5 rounded-lg cursor-not-allowed flex items-center justify-center gap-2 font-semibold text-sm">
+                        <FaDownload /> Coming Soon
+                      </button>
+                    )}
+                  </div>
                 </Card>
               ))}
             </div>
           </div>
         )}
       </div>
+
+      {/* PDF Viewer Modal */}
+      {viewingPDF && (
+        <PDFViewer
+          pdfUrl={viewingPDF.url}
+          title={viewingPDF.title}
+          onClose={() => setViewingPDF(null)}
+        />
+      )}
     </section>
   );
 });

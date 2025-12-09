@@ -13,6 +13,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Alumni = lazy(() => import('./pages/Alumni'));
 const Canvas = lazy(() => import('./pages/Canvas'));
+const AdminUpload = lazy(() => import('./pages/AdminUpload'));
 
 // Loading component
 const PageLoader = () => (
@@ -41,6 +42,7 @@ function App() {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/alumni" element={<Alumni />} />
               <Route path="/canvas" element={<Canvas />} />
+              <Route path="/admin/upload" element={<AdminUpload />} />
             </Routes>
           </Suspense>
         </main>
