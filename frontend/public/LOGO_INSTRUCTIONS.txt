@@ -1,0 +1,11 @@
+INSTRUCTIONS: 
+Please save the Editorial Board logo (the image with the pen, wings, and MMM University text) 
+to this folder as:
+- logo.png (for general use)
+- favicon.ico (for browser tab icon)
+
+You can convert the image to .ico format using online tools like:
+- https://www.icoconverter.com/
+- https://favicon.io/
+
+The logo should be saved in this public folder.
