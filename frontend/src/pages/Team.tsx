@@ -5,28 +5,33 @@ import CircularGallery from '../components/Common/CircularGallery';
 import { FaUsers, FaGraduationCap, FaStar } from 'react-icons/fa';
 
 const Team: React.FC = () => {
+  // 📝 TO ADD REAL PHOTOS:
+  // 1. Place team photos in: frontend/public/team/
+  // 2. Update the 'image' path below (e.g., '/team/member-name.jpg')
+  // 3. Update the 'text' with actual Name and Branch
+
   const finalYearMembers = [
-    { image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop', text: 'Priya Sharma\nComputer Science\nFinal Year' },
-    { image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=600&fit=crop', text: 'Rahul Verma\nElectrical Engineering\nFinal Year' },
-    { image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=600&fit=crop', text: 'Ananya Reddy\nMechanical Engineering\nFinal Year' },
-    { image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=600&fit=crop', text: 'Arjun Patel\nCivil Engineering\nFinal Year' },
-    { image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop', text: 'Vikram Singh\nChemical Engineering\nFinal Year' },
+    { image: '/team/.jpg', text: 'Ritesh Yadav\nBranch: Computer Science\nFinal Year' },
+    { image: '/team/member2.jpg', text: 'Member Name\nBranch: Electrical Engineering\nFinal Year' },
+    { image: '/team/member3.jpg', text: 'Member Name\nBranch: Mechanical Engineering\nFinal Year' },
+    { image: '/team/member4.jpg', text: 'Member Name\nBranch: Civil Engineering\nFinal Year' },
+    { image: '/team/member5.jpg', text: 'Member Name\nBranch: Chemical Engineering\nFinal Year' },
   ];
 
   const preFinalYearMembers = [
-    { image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=600&fit=crop', text: 'Sneha Desai\nComputer Science\nPre-Final Year' },
-    { image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&h=600&fit=crop', text: 'Rohan Gupta\nElectronics Engineering\nPre-Final Year' },
-    { image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=600&fit=crop', text: 'Kavya Nair\nBiotechnology\nPre-Final Year' },
-    { image: 'https://images.unsplash.com/photo-1488161628813-04466f872be2?w=600&h=600&fit=crop', text: 'Aditya Kumar\nInformation Technology\nPre-Final Year' },
-    { image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=600&fit=crop', text: 'Ishita Malhotra\nMechanical Engineering\nPre-Final Year' },
+    { image: '/team/member6.jpg', text: 'Member Name\nBranch: Computer Science\nPre-Final Year' },
+    { image: '/team/member7.jpg', text: 'Member Name\nBranch: Electronics Engineering\nPre-Final Year' },
+    { image: '/team/member8.jpg', text: 'Member Name\nBranch: Biotechnology\nPre-Final Year' },
+    { image: '/team/member9.jpg', text: 'Member Name\nBranch: Information Technology\nPre-Final Year' },
+    { image: '/team/member10.jpg', text: 'Member Name\nBranch: Mechanical Engineering\nPre-Final Year' },
   ];
 
   const sophomoreMembers = [
-    { image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=600&fit=crop', text: 'Aarav Joshi\nComputer Science\nSophomore' },
-    { image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=600&fit=crop', text: 'Diya Rao\nElectrical Engineering\nSophomore' },
-    { image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=600&fit=crop', text: 'Riya Bansal\nCivil Engineering\nSophomore' },
-    { image: 'https://images.unsplash.com/photo-1557862921-37829c790f19?w=600&h=600&fit=crop', text: 'Karan Mehta\nMechanical Engineering\nSophomore' },
-    { image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=600&fit=crop', text: 'Sanya Kapoor\nChemical Engineering\nSophomore' },
+    { image: '/team/ritesh.jpg', text: 'Ritesh \nBranch: Computer Science\nSophomore' },
+    { image: '/team/member12.jpg', text: 'Member Name\nBranch: Electrical Engineering\nSophomore' },
+    { image: '/team/member13.jpg', text: 'Member Name\nBranch: Civil Engineering\nSophomore' },
+    { image: '/team/member14.jpg', text: 'Member Name\nBranch: Mechanical Engineering\nSophomore' },
+    { image: '/team/member15.jpg', text: 'Member Name\nBranch: Chemical Engineering\nSophomore' },
   ];
 
   const teamSections = [

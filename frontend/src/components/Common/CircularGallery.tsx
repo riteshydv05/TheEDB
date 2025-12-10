@@ -27,7 +27,7 @@ function autoBind(instance: any) {
 function createTextTexture(gl: any, text: string, font = 'bold 30px monospace', color = 'black') {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d')!;
-  const lines = text.split('\\n');
+  const lines = text.split('\n');
   const fontSize = parseInt(font, 10);
   const lineHeight = fontSize * 1.4;
   
