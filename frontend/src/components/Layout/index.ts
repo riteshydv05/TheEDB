@@ -1,2 +1,6 @@
-export { default as Header } from './Header';
-export { default as Footer } from './Footer';
+// Layout Components Exports
+export { Layout } from './Layout';
+export { Navbar } from './Navbar';
+export { Footer } from './Footer/index';
+export { DesktopNav } from './DesktopNav';
+export { MobileNav } from './MobileNav';

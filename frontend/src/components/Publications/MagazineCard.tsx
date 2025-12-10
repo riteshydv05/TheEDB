@@ -1,7 +1,8 @@
 import React, { useState, memo } from 'react';
 import { Card } from '../UI';
-import { FaDownload, FaUser, FaCalendar, FaTag, FaEye, FaFilePdf } from 'react-icons/fa';
+import { FaDownload, FaUser, FaCalendar, FaTag, FaEye } from 'react-icons/fa';
 import PDFViewer from './PDFViewer';
+import { OptimizedImage } from '../Common';
 
 export interface Publication {
   id: number;
@@ -63,11 +64,10 @@ const MagazineCard: React.FC<MagazineCardProps> = memo(({ publications }) => {
                   {/* Magazine Shadow Effect */}
                   <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[85%] h-8 bg-black/20 blur-xl rounded-full"></div>
                   
-                  <img
+                  <OptimizedImage
                     src={featuredPub.image}
                     alt={featuredPub.title}
                     className="relative max-w-full h-auto max-h-[500px] rounded-lg shadow-2xl transition-all duration-500 transform group-hover:scale-[1.02] group-hover:-rotate-1"
-                    loading="eager"
                   />
                   
                   {/* Hover Overlay */}

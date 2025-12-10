@@ -33,8 +33,10 @@ const PDFUpload: React.FC<PDFUploadProps> = ({ onUploadComplete, onClose }) => {
         setError('Please select a PDF file');
         return;
       }
-      if (file.size > 10 * 1024 * 1024) { // 10MB limit
-        setError('File size must be less than 10MB');
+      // 100MB limit
+      if (file.size > 100 * 1024 * 1024) {
+        const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        setError(`File size is ${fileSizeMB}MB. Maximum allowed is 100MB.`);
         return;
       }
       setSelectedFile(file);
@@ -46,6 +48,12 @@ const PDFUpload: React.FC<PDFUploadProps> = ({ onUploadComplete, onClose }) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
     if (file && file.type === 'application/pdf') {
+      // 100MB limit
+      if (file.size > 100 * 1024 * 1024) {
+        const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        setError(`File size is ${fileSizeMB}MB. Maximum allowed is 100MB.`);
+        return;
+      }
       setSelectedFile(file);
       setError(null);
     } else {
@@ -60,6 +68,13 @@ const PDFUpload: React.FC<PDFUploadProps> = ({ onUploadComplete, onClose }) => {
   const uploadToCloudinary = async () => {
     if (!selectedFile) return;
 
+    // Check if environment variables are configured
+    if (!cloudName || !uploadPreset) {
+      setError('Configuration error: Please check your .env file');
+      console.error('Missing Cloudinary configuration:', { cloudName, uploadPreset });
+      return;
+    }
+
     setUploading(true);
     setError(null);
     setUploadProgress(0);
@@ -67,11 +82,19 @@ const PDFUpload: React.FC<PDFUploadProps> = ({ onUploadComplete, onClose }) => {
     const formData = new FormData();
     formData.append('file', selectedFile);
     formData.append('upload_preset', uploadPreset);
-    formData.append('resource_type', 'raw'); // Important for PDFs
+    formData.append('resource_type', 'raw');
 
     try {
+      console.log('Uploading to Cloudinary:', {
+        cloudName,
+        uploadPreset,
+        fileName: selectedFile.name,
+        fileSize: selectedFile.size,
+        fileType: selectedFile.type
+      });
+
       const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`,
+        `https://api.cloudinary.com/v1_1/${cloudName}/upload`,
         {
           method: 'POST',
           body: formData,
@@ -79,10 +102,29 @@ const PDFUpload: React.FC<PDFUploadProps> = ({ onUploadComplete, onClose }) => {
       );
 
       if (!response.ok) {
-        throw new Error('Upload failed');
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Cloudinary error response:', errorData);
+        
+        if (response.status === 400) {
+          if (errorData.error?.message) {
+            const message = errorData.error.message;
+            // Check for file size error
+            if (message.includes('File size too large')) {
+              const fileSizeMB = (selectedFile.size / (1024 * 1024)).toFixed(2);
+              throw new Error(`File size is ${fileSizeMB}MB. Please check your Cloudinary plan limits or compress your PDF.`);
+            }
+            throw new Error(`Upload failed: ${message}`);
+          }
+          throw new Error('Invalid upload preset. Make sure it allows raw/auto uploads');
+        } else if (response.status === 401) {
+          throw new Error('Authentication failed. Check your upload preset is Unsigned');
+        } else {
+          throw new Error(`Upload failed with status ${response.status}`);
+        }
       }
 
       const data = await response.json();
+      console.log('Upload successful:', data);
       
       const uploadedFileData: UploadedFile = {
         publicId: data.public_id,
@@ -108,7 +150,8 @@ const PDFUpload: React.FC<PDFUploadProps> = ({ onUploadComplete, onClose }) => {
       }, 3000);
 
     } catch (err) {
-      setError('Upload failed. Please try again.');
+      const errorMessage = err instanceof Error ? err.message : 'Upload failed. Please try again.';
+      setError(errorMessage);
       console.error('Upload error:', err);
     } finally {
       setUploading(false);
@@ -161,7 +204,7 @@ const PDFUpload: React.FC<PDFUploadProps> = ({ onUploadComplete, onClose }) => {
                 Browse Files
               </button>
               <p className="text-xs text-gray-400 mt-4">
-                Maximum file size: 10MB • Supported format: PDF
+                Maximum file size: <span className="font-semibold text-orange-600">100MB</span> • Supported format: PDF
               </p>
             </>
           ) : (
