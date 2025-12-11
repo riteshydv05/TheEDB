@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { MagazineCard } from '../components/Publications';
-import type { Publication } from '../components/Publications';
+import { MagazineCard } from '../components/features/publications';
+import type { Publication } from '../components/features/publications/MagazineCard';
 import { FaBook, FaNewspaper, FaCalendarAlt, FaPaperPlane, FaArrowRight } from 'react-icons/fa';
 
 const Publications: React.FC = () => {
@@ -18,82 +18,34 @@ const Publications: React.FC = () => {
     {
       id: 1,
       title: 'TIRESIA',
-      subtitle: 'Volume 16, Issue 2 - Eclectic Essence',
+      subtitle: 'Volume 16, Issue 3 - June Issue',
+      authors: 'The Editorial Board, MMMUT',
+      date: 'June 2024',
+      category: 'Magazine',
+      image: '/magazines/june-issue.jpg',
+      description: 'The June Issue of TIRESIA brings you a collection of thought-provoking articles, creative pieces, and insights from our university community. Featuring interviews with Mr. Vikky Lakhmani, campus buzz, tech insights, and much more.',
+      isFeatured: true,
+      pdfUrl: 'https://res.cloudinary.com/dwdx4kjgx/raw/upload/v1765354562/vol_16_issue3_n8sdyz.pdf',
+    },
+    {
+      id: 2,
+      title: 'TIRESIA',
+      subtitle: 'Volume 16, Issue 2 - May Issue',
       authors: 'The Editorial Board, MMMUT',
       date: 'May 2024',
       category: 'Magazine',
       image: '/image.png',
-      description: 'The May Issue of TIRESIA brings you a collection of thought-provoking articles, creative pieces, and insights from our university community. Featuring interviews, campus buzz, tech insights, and much more.',
-      isFeatured: true,
-      // Add your Cloudinary PDF URL here after uploading
       pdfUrl: 'https://res.cloudinary.com/dwdx4kjgx/raw/upload/v1765314794/vol_16_issue_2_xocsqk.pdf',
     },
     {
-      id: 2,
-      title: 'Advanced Machine Learning Algorithms',
-      authors: 'Dr. Rajesh Kumar, Prof. Anjali Singh',
-      date: 'November 2024',
-      category: 'Computer Science',
-      image: '📄',
-      pdfUrl: 'https://res.cloudinary.com/dwdx4kjgx/raw/upload/v1765354562/vol_16_issue3_n8sdyz.pdf',
-    },
-    {
       id: 3,
-      title: 'Quantum Computing: Future Prospects',
-      authors: 'Dr. Vikram Patel, Dr. Neha Verma',
-      date: 'October 2024',
-      category: 'Physics',
-      image: '📊',
+      title: 'TIRESIA',
+      subtitle: 'Volume 16, Issue 1 - January Issue',
+      authors: 'The Editorial Board, MMMUT',
+      date: 'January 2024',
+      category: 'Magazine',
+      image: '/magazines/january-issue.jpg',
       pdfUrl: 'https://res.cloudinary.com/dwdx4kjgx/raw/upload/v1765354706/vol_16_issue_1_krslh5.pdf'
-    },
-    {
-      id: 4,
-      title: 'Sustainable Engineering Practices',
-      authors: 'Prof. Aditya Gupta, Dr. Priya Sharma',
-      date: 'September 2024',
-      category: 'Engineering',
-      image: '🔧',
-      pdfUrl: ''
-    },
-    {
-      id: 5,
-      title: 'Biodiversity and Conservation',
-      authors: 'Dr. Neha Verma, Dr. Rajesh Kumar',
-      date: 'August 2024',
-      category: 'Biology',
-      image: '🌿',
-    },
-    {
-      id: 6,
-      title: 'Novel Approaches in Mathematics',
-      authors: 'Prof. Vikram Patel',
-      date: 'July 2024',
-      category: 'Mathematics',
-      image: '📐',
-    },
-    {
-      id: 7,
-      title: 'Nanotechnology Applications',
-      authors: 'Dr. Priya Sharma, Prof. Aditya Gupta',
-      date: 'June 2024',
-      category: 'Chemistry',
-      image: '⚗️',
-    },
-    {
-      id: 8,
-      title: 'Artificial Intelligence in Healthcare',
-      authors: 'Dr. Rajesh Kumar, Dr. Neha Verma',
-      date: 'May 2024',
-      category: 'Technology',
-      image: '🏥',
-    },
-    {
-      id: 9,
-      title: 'Climate Change Mitigation',
-      authors: 'Prof. Anjali Singh, Dr. Vikram Patel',
-      date: 'April 2024',
-      category: 'Environmental Science',
-      image: '🌍',
     },
   ];
 

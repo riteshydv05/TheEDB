@@ -1,8 +1,8 @@
 import React, { useState, memo } from 'react';
-import { Card } from '../UI';
+import { Card } from '../../ui';
 import { FaDownload, FaUser, FaCalendar, FaTag, FaEye } from 'react-icons/fa';
 import PDFViewer from './PDFViewer';
-import { OptimizedImage } from '../Common';
+import { OptimizedImage } from '../../common';
 
 export interface Publication {
   id: number;
@@ -53,11 +53,11 @@ const MagazineCard: React.FC<MagazineCardProps> = memo(({ publications }) => {
               </h2>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-12 items-center bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg">
+            <div className="grid md:grid-cols-2 gap-12 items-center bg-linear-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg">
               {/* Magazine Cover Image */}
               <div className="flex justify-center">
                 <div
-                  className="relative group cursor-pointer"
+                  className="relative group cursor-pointer max-w-xs mx-auto"
                   onMouseEnter={() => setHoveredId(featuredPub.id)}
                   onMouseLeave={() => setHoveredId(null)}
                 >
@@ -67,7 +67,7 @@ const MagazineCard: React.FC<MagazineCardProps> = memo(({ publications }) => {
                   <OptimizedImage
                     src={featuredPub.image}
                     alt={featuredPub.title}
-                    className="relative max-w-full h-auto max-h-[500px] rounded-lg shadow-2xl transition-all duration-500 transform group-hover:scale-[1.02] group-hover:-rotate-1"
+                    className="relative w-full h-auto aspect-3/4 object-cover rounded-lg shadow-2xl transition-all duration-500 transform group-hover:scale-[1.02] group-hover:-rotate-1"
                   />
                   
                   {/* Hover Overlay */}
@@ -174,12 +174,12 @@ const MagazineCard: React.FC<MagazineCardProps> = memo(({ publications }) => {
               {otherPubs.map((pub) => (
                 <Card key={pub.id} className="flex flex-col group overflow-hidden" hoverable>
                   {/* Publication Image/Icon */}
-                  <div className="relative overflow-hidden rounded-xl mb-5 h-52 bg-linear-to-br from-gray-100 to-gray-50 flex items-center justify-center">
+                  <div className="relative overflow-hidden rounded-xl mb-5 h-80 bg-linear-to-br from-gray-100 to-gray-50 flex items-center justify-center shadow-lg">
                     {pub.image.startsWith('http') || pub.image.startsWith('/') ? (
                       <img
                         src={pub.image}
                         alt={pub.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                     ) : (

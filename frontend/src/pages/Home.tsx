@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { Button } from '../components/UI';
+import { Button } from '../components/ui';
 import { FaAward, FaUsers, FaCalendar, FaBook, FaUniversity, FaNewspaper, FaPen, FaGlobe, FaArrowRight } from 'react-icons/fa';
 
 const Home: React.FC = () => {

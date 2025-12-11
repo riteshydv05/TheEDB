@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import Card from '../components/Common/Card';
+import Card from '../components/common/Card';
 import HeroAlumni from './HeroAlumni';
 import { FaUsers, FaRocket, FaFileAlt, FaTrophy, FaLinkedin, FaArrowRight } from 'react-icons/fa';
 

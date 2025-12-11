@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import Card from '../components/Common/Card';
+import Card from '../components/common/Card';
 import { FaCalendarAlt, FaMapMarkerAlt, FaClock, FaArrowRight, FaBell, FaUsers, FaCheck } from 'react-icons/fa';
 
 interface Event {

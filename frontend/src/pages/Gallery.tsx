@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import Card from '../components/Common/Card';
+import Card from '../components/common/Card';
 import { FaCamera, FaImages, FaCalendarAlt, FaHeart, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 interface GalleryImage {

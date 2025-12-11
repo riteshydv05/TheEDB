@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaInstagram, FaPaperPlane, FaClock, FaCheckCircle } from 'react-icons/fa';
-import { FadeIn, StaggerContainer, StaggerItem } from '../components/Motion';
+import { FadeIn, StaggerContainer, StaggerItem } from '../components/animations';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({

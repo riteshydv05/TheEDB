@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import CardSwap, { Card } from '../components/Common/CardSwap';
-import RotatingText, { type RotatingTextRef } from '../components/Common/RotatingText';
+import CardSwap, { Card } from '../components/common/CardSwap';
+import RotatingText, { type RotatingTextRef } from '../components/common/RotatingText';
 import { FaGraduationCap, FaStar, FaUsers, FaArrowDown } from 'react-icons/fa';
 
 function HeroAlumni() {

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCalendar, FaHeart, FaQuoteLeft, FaImage, FaTimes, FaPaperPlane, FaLightbulb, FaRocket, FaGlobe, FaPlus } from 'react-icons/fa';
-import { FadeIn, StaggerContainer, StaggerItem, HoverScale } from '../components/Motion';
+import { FadeIn, StaggerContainer, StaggerItem, HoverScale } from '../components/animations';
 
 interface Thought {
   id: number;

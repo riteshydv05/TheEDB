@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import RotatingText from './RotatingText';
+import RotatingText from '../../common/RotatingText';
 
 interface AlumniRotatingBannerProps {
   syncInterval: number;

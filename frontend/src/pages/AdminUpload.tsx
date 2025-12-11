@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PDFUpload } from '../components/Publications';
+import { PDFUpload } from '../components/features/publications';
 import { FaCopy, FaCheckCircle } from 'react-icons/fa';
 
 interface UploadedPDF {

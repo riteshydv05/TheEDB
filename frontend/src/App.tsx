@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { Layout } from './components/Layout';
-import ScrollToTop from './components/Common/ScrollToTop';
-import { PageLoader } from './components/shared';
+import { Layout } from './components/layout';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -20,7 +19,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <Layout>
-        <Suspense fallback={<PageLoader />}>
+        <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div></div>}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/team" element={<Team />} />
